@@ -10,10 +10,10 @@ css = """<style>
     /*                                        */
     /******************************************/
     /*                                        */
-    /*  Last updated on 2019-07-12.           */
+    /*  Last updated on 2019-08-17.           */
     /*                                        */
     /*  Tested with:                          */
-    /*   - v2.0.2-v2.0.4                      */
+    /*   - v2.1.0                             */
     /*                                        */
     /******************************************/
 
@@ -58,6 +58,9 @@ css = """<style>
         color: var(--medium) !important;
     }
     .md-caption{
+        color: var(--main-text) !important;
+    }
+    .learn-nav-bar .learn-url{
         color: var(--main-text) !important;
     }
     project-list .project-list-row:hover {
@@ -107,7 +110,7 @@ css = """<style>
         color: var(--text-lighter-1);
     }
     .install-badge{
-        background-color: var(badge-gray) !important;
+        background-color: var(--badge-gray) !important;
     }
     md-input-container.md-default-theme:not(.md-input-invalid).md-input-has-value label, md-input-container:not(.md-input-invalid).md-input-has-value label {
         color: var(--medium-ligher-1) !important;
@@ -119,6 +122,23 @@ css = """<style>
     md-input-container.md-default-theme .md-input::placeholder, md-input-container .md-input::placeholder{
         color: var(--medium-ligher-1) !important;
     }
+    /* common */
+    md-list.md-default-theme md-list-item.md-2-line .md-list-item-text h3,
+    md-list md-list-item.md-2-line .md-list-item-text h3,
+    md-list.md-default-theme md-list-item.md-2-line .md-list-item-text h4,
+    md-list md-list-item.md-2-line .md-list-item-text h4,
+    md-list.md-default-theme md-list-item.md-3-line .md-list-item-text h3,
+    md-list md-list-item.md-3-line .md-list-item-text h3,
+    md-list.md-default-theme md-list-item.md-3-line .md-list-item-text h4,
+    md-list md-list-item.md-3-line .md-list-item-text h4 {
+        color: var(--text-lighter-1);
+    }
+    md-list.md-default-theme md-list-item.md-2-line .md-list-item-text p,
+    md-list md-list-item.md-2-line .md-list-item-text p,
+    md-list.md-default-theme md-list-item.md-3-line .md-list-item-text p,
+    md-list md-list-item.md-3-line .md-list-item-text p {
+        color: var(--main-text) !important;
+    }
     /* button */
     .md-button.md-default-theme.md-raised, .md-button.md-raised {
         color: var(--text-lighter-1);
@@ -129,6 +149,9 @@ css = """<style>
     }
     .md-button.md-default-theme.md-raised:not([disabled]).md-focused, .md-button.md-raised:not([disabled]).md-focused {
         background-color: var(--bg-lighter-1);
+    }
+    md-nav-bar.md-default-theme .md-button._md-nav-button.md-unselected, md-nav-bar .md-button._md-nav-button.md-unselected{
+        color: var(--text-lighter);
     }
     /* tabs */
     md-tabs.md-default-theme .md-tab, md-tabs .md-tab {
@@ -144,7 +167,16 @@ css = """<style>
     .um-user-account md-card{
         background:transparent;
     }
-</style>\n"""
+    /* learn item */
+    .learn-page .learn-item{
+        background-color: var(--bg-lighter-2) !important;
+    }
+    /* learn item top */
+    .learn-top-container .learn-top-items .learn-top-item .learn-top-item-text .learn-top-item-desc {
+        color: var(--main-text) !important;
+    }
+</style>
+"""
 
 if len(sys.argv) == 2:
     path = sys.argv[1]
