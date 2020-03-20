@@ -10,7 +10,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 * Node Package Manager (NPM)
 * Python 3.5+
-* Unity Hub 2.2.x
+* Unity Hub 2.3.x
 
 ## License
 
