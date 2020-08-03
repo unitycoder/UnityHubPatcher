@@ -4,7 +4,9 @@ Patches Unity Hub with a custom dark theme.
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+Simply run hub_patcher.py with the path to your Unity Hub installation as the first arguement. You may have to run as administrator depending on where it is installed.
+
+Ex: `python hub_patcher.py "D:/Program Files/Unity Hub"`
 
 ### Prerequisites
 
