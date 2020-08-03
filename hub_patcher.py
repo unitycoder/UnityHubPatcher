@@ -10,10 +10,10 @@ css = """<style>
     /*                                        */
     /******************************************/
     /*                                        */
-    /*  Last updated on 2019-08-17.           */
+    /*  Last updated on 2020-08-02.           */
     /*                                        */
     /*  Tested with:                          */
-    /*   - v2.3.0                             */
+    /*   - v2.3.2                             */
     /*                                        */
     /******************************************/
 
@@ -47,6 +47,9 @@ css = """<style>
     md-icon.md-default-theme, md-icon{
         color: var(--text-lighter-1);
     }
+    project-list-item .action md-icon:hover{
+        color: var(--main-text) !important;
+    }
     md-card.md-default-theme, md-card {
         color: var(--text-lighter-1) !important;
         background-color: var(--bg-lighter-2);
@@ -69,17 +72,20 @@ css = """<style>
     md-select.md-default-theme .md-select-value.md-select-placeholder, md-select .md-select-value.md-select-placeholder {
         color: var(--medium);
     }
+    md-select.md-default-theme:not([disabled]):focus .md-select-value, md-select:not([disabled]):focus .md-select-value{
+        color: var(--text-lighter-1) !important;
+    }
     .project-list-container::-webkit-scrollbar, .card-list-container md-tab-content::-webkit-scrollbar {
         background: var(--bg-lighter-2) !important;
     }
-    .install-list::-webkit-scrollbar{
+    .install-list::-webkit-scrollbar, .elements-container::-webkit-scrollbar, .learn-page::-webkit-scrollbar{
         background: transparent !important;
     }
     .project-list-container::-webkit-scrollbar-thumb:hover, .card-list-container md-tab-content::-webkit-scrollbar-thumb:hover{
         background-color: var(--medium-ligher-1) !important;
         border-color: var(--bg-lighter-2) !important;
     }
-    .install-list::-webkit-scrollbar-thumb:hover {
+    .install-list::-webkit-scrollbar-thumb:hover, .elements-container::-webkit-scrollbar-thumb:hover, .learn-page::-webkit-scrollbar-thumb:hover {
         background-color: var(--medium-ligher-1) !important;
         border-color: var(--bg-lighter-2) !important;
     }
@@ -87,20 +93,20 @@ css = """<style>
         background-color: var(--medium) !important;
         border: 5px solid var(--bg-lighter-2) !important;
     }
-    .install-list::-webkit-scrollbar-thumb {
+    .install-list::-webkit-scrollbar-thumb, .elements-container::-webkit-scrollbar-thumb, .learn-page::-webkit-scrollbar-thumb {
         background-color: var(--medium) !important;
         border: 5px solid var(--body-bg) !important;
     }
     .project-list-container::-webkit-scrollbar-track:hover, .card-list-container md-tab-content::-webkit-scrollbar-track:hover{
         background-color: var(--bg-lighter-3) !important;
     }
-    .install-list::-webkit-scrollbar-track:hover {
+    .install-list::-webkit-scrollbar-track:hover, .elements-container::-webkit-scrollbar-track:hover, .learn-page::-webkit-scrollbar-track:hover {
         background-color: transparent !important;
     }
     .project-list-container::-webkit-scrollbar-track, .card-list-container md-tab-content::-webkit-scrollbar-track{
         background: var(--bg-lighter-2) !important;
     }
-    .install-list::-webkit-scrollbar-track {
+    .install-list::-webkit-scrollbar-track, .elements-container::-webkit-scrollbar-track, .learn-page::-webkit-scrollbar-track {
         background: transparent !important;
     }
     md-select-menu.md-default-theme md-content, md-select-menu md-content, md-menu-content.md-default-theme, md-menu-content {
@@ -174,6 +180,18 @@ css = """<style>
     /* learn item top */
     .learn-top-container .learn-top-items .learn-top-item .learn-top-item-text .learn-top-item-desc {
         color: var(--main-text) !important;
+    }
+    /* community card */
+    .community-card md-card-content{
+        background-color: var(--bg-lighter-2) !important;
+    }
+    /* community card desc */
+    .community-card md-card-content .community-description{
+        color: var(--main-text) !important;
+    }
+    /* beta badge */
+    .beta{
+        background-color: var(--bg-lighter-4) !important;
     }
 </style>
 """
