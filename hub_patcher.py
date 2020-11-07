@@ -44,7 +44,8 @@ css = """<style>
         background:transparent !important;
         color: var(--text-lighter-1);
     }
-    md-icon.md-default-theme, md-icon{
+    /* icons */
+    md-icon.md-default-theme, md-icon, md-menu-content.md-default-theme md-menu-item md-icon, md-menu-content md-menu-item md-icon{
         color: var(--text-lighter-1);
     }
     project-list-item .action md-icon:hover{
@@ -57,7 +58,7 @@ css = """<style>
     project-list-item{
         border-top: solid 1px var(--bg-lighter-1) !important;
     }
-    project-list-item md-select:hover .md-select-icon {
+    project-list-item md-select:hover .md-select-icon, md-select.md-default-theme .md-select-icon, md-select .md-select-icon {
         color: var(--medium) !important;
     }
     .md-caption{
@@ -118,6 +119,7 @@ css = """<style>
     .install-badge{
         background-color: var(--badge-gray) !important;
     }
+    /* input */
     md-input-container.md-default-theme:not(.md-input-invalid).md-input-has-value label, md-input-container:not(.md-input-invalid).md-input-has-value label {
         color: var(--medium-ligher-1) !important;
     }
@@ -127,6 +129,12 @@ css = """<style>
     }
     md-input-container.md-default-theme .md-input::placeholder, md-input-container .md-input::placeholder{
         color: var(--medium-ligher-1) !important;
+    }
+    /* textarea */
+    textarea{
+        background-color: var(--bg-lighter-3);
+        border:none;
+        color: var(--medium-ligher-1);
     }
     /* common */
     md-list.md-default-theme md-list-item.md-2-line .md-list-item-text h3,
@@ -192,6 +200,23 @@ css = """<style>
     /* beta badge */
     .beta{
         background-color: var(--bg-lighter-4) !important;
+    }
+    /* update options */
+    .um-update-options .md-button:first-child:enabled{
+        background-color: var(--bg-lighter-2) !important;
+    }
+    /* beta description */
+    .beta-description{
+        background-color: var(--bg-lighter-3) !important;
+    }
+    /* caret */
+    md-menu-content.md-default-theme .md-menu>.md-button:after, md-menu-content .md-menu>.md-button:after{
+        color: var(--main-text) !important;
+    }
+    /* dialog */
+    md-dialog.md-default-theme, md-dialog{
+        background-color: var(--bg-lighter-2) !important;
+        color: var(--main-text) !important;
     }
 </style>
 """

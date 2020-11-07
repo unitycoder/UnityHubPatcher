@@ -8,6 +8,8 @@ Simply run hub_patcher.py with the path to your Unity Hub installation as the fi
 
 Ex: `python hub_patcher.py "D:/Program Files/Unity Hub"`
 
+Note that Hub Patcher has only been tested on Windows 10. OS X and Linux may or may not work.
+
 ### Prerequisites
 
 * Node Package Manager (NPM)
