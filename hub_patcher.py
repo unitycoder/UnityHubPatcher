@@ -10,10 +10,10 @@ css = """<style>
     /*                                        */
     /******************************************/
     /*                                        */
-    /*  Last updated on 2020-08-02.           */
+    /*  Last updated on 2020-11-07.           */
     /*                                        */
     /*  Tested with:                          */
-    /*   - v2.3.2                             */
+    /*   - v2.4.2                             */
     /*                                        */
     /******************************************/
 
@@ -48,7 +48,7 @@ css = """<style>
     md-icon.md-default-theme, md-icon, md-menu-content.md-default-theme md-menu-item md-icon, md-menu-content md-menu-item md-icon{
         color: var(--text-lighter-1);
     }
-    project-list-item .action md-icon:hover{
+    project-list-item .action md-icon:hover, project-list-item .action .md-icon-button:hover md-icon{
         color: var(--main-text) !important;
     }
     md-card.md-default-theme, md-card {
