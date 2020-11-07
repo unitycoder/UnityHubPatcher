@@ -2,6 +2,8 @@
 
 Patches Unity Hub with a custom dark theme.
 
+![Dark theme screenshot](/screenshot.png)
+
 ## Getting Started
 
 Simply run hub_patcher.py with the path to your Unity Hub installation as the first arguement. You may have to run as administrator depending on where it is installed.
