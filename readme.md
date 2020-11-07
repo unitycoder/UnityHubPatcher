@@ -14,7 +14,7 @@ Note that Hub Patcher has only been tested on Windows 10. OS X and Linux may or 
 
 * Node Package Manager (NPM)
 * Python 3.5+
-* Unity Hub 2.3.x
+* Unity Hub 2.4.x
 
 ## License
 
