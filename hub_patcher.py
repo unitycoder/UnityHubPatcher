@@ -10,7 +10,7 @@ css = """<style>
     /*                                        */
     /******************************************/
     /*                                        */
-    /*  Last updated on 2020-11-07.           */
+    /*  Last updated on 2021-2-28.            */
     /*                                        */
     /*  Tested with:                          */
     /*   - v2.4.2                             */
@@ -25,10 +25,11 @@ css = """<style>
         --bg-lighter-4: #222;
         --bg-lighter-5: #282828;
         --main-text: #888;
+        --main-text-a50: rgba(136, 136, 136, 0.5);
         --text-lighter-1: #aaa;
         --light-bg: #ddd;
         --medium: #585858;
-        --medium-ligher-1: #686868;
+        --medium-lighter-1: #686868;
         --badge-gray: #333;
         --black-a30: rgba(0,0,0,0.3);
     }
@@ -83,11 +84,11 @@ css = """<style>
         background: transparent !important;
     }
     .project-list-container::-webkit-scrollbar-thumb:hover, .card-list-container md-tab-content::-webkit-scrollbar-thumb:hover{
-        background-color: var(--medium-ligher-1) !important;
+        background-color: var(--medium-lighter-1) !important;
         border-color: var(--bg-lighter-2) !important;
     }
     .install-list::-webkit-scrollbar-thumb:hover, .elements-container::-webkit-scrollbar-thumb:hover, .learn-page::-webkit-scrollbar-thumb:hover {
-        background-color: var(--medium-ligher-1) !important;
+        background-color: var(--medium-lighter-1) !important;
         border-color: var(--bg-lighter-2) !important;
     }
     .project-list-container::-webkit-scrollbar-thumb, .card-list-container md-tab-content::-webkit-scrollbar-thumb {
@@ -121,20 +122,23 @@ css = """<style>
     }
     /* input */
     md-input-container.md-default-theme:not(.md-input-invalid).md-input-has-value label, md-input-container:not(.md-input-invalid).md-input-has-value label {
-        color: var(--medium-ligher-1) !important;
+        color: var(--medium-lighter-1) !important;
     }
     md-input-container.md-default-theme .md-input, md-input-container .md-input{
         color: var(--main-text) !important;
         border-color: var(--black-a30) !important;
     }
     md-input-container.md-default-theme .md-input::placeholder, md-input-container .md-input::placeholder{
-        color: var(--medium-ligher-1) !important;
+        color: var(--medium-lighter-1) !important;
+    }
+    md-input-container:not(.md-input-focused).md-default-theme .md-placeholder, md-input-container:not(.md-input-focused) .md-placeholder, md-input-container:not(.md-input-focused).md-default-theme label, md-input-container:not(.md-input-focused) label{
+        color: var(--main-text) !important;
     }
     /* textarea */
     textarea{
         background-color: var(--bg-lighter-3);
         border:none;
-        color: var(--medium-ligher-1);
+        color: var(--medium-lighter-1);
     }
     /* common */
     md-list.md-default-theme md-list-item.md-2-line .md-list-item-text h3,
@@ -189,6 +193,10 @@ css = """<style>
     .learn-top-container .learn-top-items .learn-top-item .learn-top-item-text .learn-top-item-desc {
         color: var(--main-text) !important;
     }
+    /* learn dialog */
+    .learn-dialog-scrollable-area .learn-dialog-content .learn-dialog-content-info{
+        color: var(--main-text) !important;
+    }
     /* community card */
     .community-card md-card-content{
         background-color: var(--bg-lighter-2) !important;
@@ -217,6 +225,54 @@ css = """<style>
     md-dialog.md-default-theme, md-dialog{
         background-color: var(--bg-lighter-2) !important;
         color: var(--main-text) !important;
+    }
+    /* stepper */
+    .md-stepper-indicator-wrapper{
+        background-color: var(--bg-lighter-2) !important;
+    }
+    .md-stepper-indicator.md-active .md-stepper-title, .md-stepper-indicator.md-completed .md-stepper-title{
+        color: var(--main-text) !important;
+    }
+    .md-steppers-linear .md-stepper-title, .md-steppers-linear .md-stepper-title small:not(.md-stepper-error-message){
+        color: var(--main-text-a50) !important;
+    }
+    .md-steppers-horizontal .md-stepper-indicator:after{
+        background-color: var(--bg-lighter-5) !important;
+    }
+    .md-stepper-indicator:not(.md-active) .md-stepper-number{
+        background-color: var(--bg-lighter-5) !important;
+        color: var(--main-text);
+    }
+    /* radio */
+    md-radio-button.md-default-theme[disabled], md-radio-button[disabled], md-radio-group.md-default-theme[disabled], md-radio-group[disabled] {
+        color: var(--main-text-a50) !important;
+    }
+    md-radio-button.md-default-theme .md-off, md-radio-button .md-off{
+        border-color: var(--main-text) !important;
+    }
+    md-radio-button.md-default-theme[disabled] .md-container .md-off, md-radio-button[disabled] .md-container .md-off, md-radio-button.md-default-theme[disabled] .md-container .md-on, md-radio-button[disabled] .md-container .md-on, md-radio-group.md-default-theme[disabled] .md-container .md-off, md-radio-group[disabled] .md-container .md-off, md-radio-group.md-default-theme[disabled] .md-container .md-on, md-radio-group[disabled] .md-container .md-on{
+        border-color: var(--main-text-a50) !important;
+    }
+    /* checkbox */
+    md-checkbox.md-default-theme:not(.md-checked) .md-icon, md-checkbox:not(.md-checked) .md-icon{
+        border-color: var(--main-text) !important;
+    }
+    /* back button */
+    .md-button.md-default-theme.md-accent[disabled], .md-button.md-accent[disabled], .md-button.md-default-theme.md-fab[disabled], .md-button.md-fab[disabled], .md-button.md-default-theme.md-raised[disabled], .md-button.md-raised[disabled], .md-button.md-default-theme.md-warn[disabled], .md-button.md-warn[disabled], .md-button.md-default-theme[disabled], .md-button[disabled]{
+        color: var(--main-text-a50) !important;
+    }
+    /* module table container */
+    .module-table-container::-webkit-scrollbar,
+    .module-table-container::-webkit-scrollbar-track{
+        background: var(--bg-lighter-2) !important;
+    }
+    .module-table-container::-webkit-scrollbar-thumb{
+        background-color: var(--medium) !important;
+        border: 5px solid var(--bg-lighter-2) !important;
+    }
+    .module-table-container::-webkit-scrollbar-thumb:hover{
+        background-color: var(--medium-lighter-1) !important;
+        border-color: var(--bg-lighter-3) !important;
     }
 </style>
 """
