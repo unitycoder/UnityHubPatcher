@@ -228,7 +228,7 @@ if len(sys.argv) == 2:
     subprocess.run("npx asar extract app.asar app", shell=True)
     print("Backing up...")
     os.rename("app.asar", "app.asar.bak")
-    os.chdir("app\client\dist")
+    os.chdir(os.path.join("app", "client", "dist"))
     
     print("Patching...")
     for line in fileinput.FileInput("index.html", inplace=1):
