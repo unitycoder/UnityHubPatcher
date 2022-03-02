@@ -6,273 +6,472 @@ import fileinput
 css = """<style>
     /******************************************/
     /*                                        */
-    /*  HubPatcher and dark theme by Andrew.  */
+    /*  HubPatcher and theme(s) by Andrew.    */
     /*                                        */
     /******************************************/
     /*                                        */
-    /*  Last updated on 2021-3-17.            */
+    /*  Last updated on 2022-3-1.             */
     /*                                        */
     /*  Tested with:                          */
-    /*   - v2.4.3                             */
+    /*   - v3.0.1                             */
     /*                                        */
     /******************************************/
 
-    body{
-        --body-bg: #111;
-        --bg-lighter-1: #141414;
-        --bg-lighter-2: #1a1a1a;
-        --bg-lighter-3: #1f1f1f;
-        --bg-lighter-4: #222;
-        --bg-lighter-5: #282828;
-        --main-text: #888;
-        --main-text-a50: rgba(136, 136, 136, 0.5);
-        --text-lighter-1: #aaa;
-        --light-bg: #ddd;
+    body {
+        --body-bg: #f0f0f0;
+        --bg-darker-1: #e0e0e0;
+        --bg-darker-2: #d0d0d0;
+        --bg-darker-3: #c8c8c8;
+        --bg-darker-4: #c0c0c0;
+        --bg-darker-5: #b8b8b8;
+        --main-text: #222;
+        --main-text-a50: rgb(34 34 34 / 50%);
+        --text-lighter-1: #383838;
+        --text-lighter-2: #4a4a4a;
+        --text-darker-1: #1a1a1a;
+        --text-darker-2: #111;
         --medium: #585858;
         --medium-lighter-1: #686868;
-        --badge-gray: #333;
-        --black-a30: rgba(0,0,0,0.3);
+        --badge-gray: var(--body-bg);
+        --black-a30: rgba(0, 0, 0, 0.3);
     }
-    body, md-content{
-        background: var(--body-bg) !important;
-        color: var(--main-text) !important;
+
+    html,
+    body,
+    #app {
+        background-color: var(--body-bg);
+        color: var(--main-text);
     }
-    .unity-top-nav .md-toolbar-tools{
-        background-color: var(--light-bg) !important;
-        filter: invert(100) !important;
+
+    /* Scrollbar */
+    *::-webkit-scrollbar-track{
+        background-color: var(--body-bg);
     }
-    .unity-side-nav.md-locked-open, .md-locked-open .unity-menu-list{
-        background:transparent !important;
+    *::-webkit-scrollbar-thumb{
+        background-color: var(--bg-darker-5);
+        border-color: var(--body-bg);
+    }
+    
+    /* Radio button */
+    .uhc-radio{
+        color: var(--main-text);
+    }
+    .uhc-radio:hover{
+        color: var(--text-darker-1);
+    }
+    .uhc-radio__dot{
+        background-color: var(--bg-darker-1);
+        border-color: var(--bg-darker-5);
+    }
+    .uhc-radio:hover .uhc-radio__dot{
+        background-color: var(--bg-darker-1);
+        border-color: var(--bg-darker-5);
+    }
+
+    /* Checkbox */
+    .uhc-checkbox{
+        color: var(--main-text);
+    }
+    .uhc-checkbox:hover{
+        color: var(--text-darker-1);
+    }
+    .uhc-checkbox__checkmark{
+        background-color: var(--bg-darker-1);
+        border-color: var(--bg-darker-5);
+    }
+    .uhc-checkbox:hover .uhc-checkbox__checkmark{
+        background-color: var(--bg-darker-1);
+        border-color: var(--bg-darker-5);
+    }
+
+    /* Button */
+    .uhc-button:not(.uhc-button--primary){
+        color: var(--main-text);
+    }
+    .uhc-button--outline:hover:not(.uhc-button--disabled){
+        background-color: var(--bg-darker-2);
+    }
+    .uhc-button__icon .uhc-icon{
+        color: var(--main-text);
+    }
+
+    /* Button Secondary */
+    .uhc-button--secondary:not(.uha-modules-list__item__add-platform-button){
+        color: var(--main-text);
+        background-color: var(--bg-darker-2);
+    }
+    .uhc-button--secondary:hover:not(.uhc-button--disabled):not(.uha-modules-list__item__add-platform-button){
+        background-color: var(--bg-darker-3);
+    }
+    .uhc-button--secondary:active:not(.uhc-button--disabled):not(.uha-modules-list__item__add-platform-button){
+        background-color: var(--bg-darker-5);
+    }
+
+    /* File input */
+    .uhc-file-input__container-inputs{
+        background-color: var(--bg-darker-2);
+    }
+    .uhc-file-input__container-inputs:hover{
+        background-color: var(--bg-darker-3);
+    }
+    .uhc-file-input__container input{
+        color: var(--main-text);
+    }
+    .uhc-file-input__container label{
         color: var(--text-lighter-1);
     }
-    /* icons */
-    md-icon.md-default-theme, md-icon, md-menu-content.md-default-theme md-menu-item md-icon, md-menu-content md-menu-item md-icon{
+
+    /* Textarea */
+    .uhc-textArea{
+        background-color: var(--bg-darker-2);
+    }
+    .uhc-textArea label{
         color: var(--text-lighter-1);
     }
-    project-list-item .action md-icon:hover, project-list-item .action .md-icon-button:hover md-icon{
-        color: var(--main-text) !important;
+    .uhc-textArea:focus-within{
+        background-color: var(--bg-darker-3);
     }
-    md-card.md-default-theme, md-card {
-        color: var(--text-lighter-1) !important;
-        background-color: var(--bg-lighter-2);
+    .uhc-textArea textarea{
+        color: var(--main-text);
     }
-    project-list-item{
-        border-top: solid 1px var(--bg-lighter-1) !important;
+
+    /* Badge */
+    .uhc-badge--grey{
+        color: var(--main-text-a50);
+        background-color: var(--badge-gray);
     }
-    project-list-item md-select:hover .md-select-icon, md-select.md-default-theme .md-select-icon, md-select .md-select-icon {
-        color: var(--medium) !important;
+
+    /* Context menu */
+    .uhc-interactable__context-menu{
+        background-color: var(--body-bg);
     }
-    .md-caption{
-        color: var(--main-text) !important;
+    .uhc-interactable__section{
+        border-bottom-color: var(--bg-darker-1);
     }
-    .learn-nav-bar .learn-url{
-        color: var(--main-text) !important;
+    .uhc-interactable__menu-item-container .uhc-interactable__menu-item .uhc-paragraph{
+        color: var(--main-text);
     }
-    project-list .project-list-row:hover {
-        background-color: var(--bg-lighter-1) !important;
+
+    /* Modal */
+    .uhc-modal{
+        background-color: var(--black-a30);
     }
-    md-select.md-default-theme .md-select-value.md-select-placeholder, md-select .md-select-value.md-select-placeholder {
+    .uhc-modal .uhc-modal__container{
+        background-color: var(--body-bg);
+    }
+    .uhc-modal .uhc-modal__container .uhc-modal__header{
+        border-bottom-color: transparent;
+    }
+    .modal__preferences__navigation{
+        border-right-color: transparent;
+    }
+
+    /* Modal header */
+    .uhc-modal .uhc-modal__container .uhc-modal__header{
+        color: var(--main-text);
+    }
+
+    /* Drawer */
+    .uha-drawer{
+        background-color: var(--body-bg);
+    }
+    .uha-drawer__heading{
+        border-bottom-color: transparent;
+    }
+    .uha-empty-list .uha-empty-list__title{
+        color: var(--text-lighter-1);
+    }
+    .uha-empty-list .uha-empty-list__description{
+        color: var(--main-text-a50);
+    }
+    .uha-drawer__overlay--open{
+        background-color: var(--black-a30);
+    }
+
+    /* Header */
+    .uhc-heading {
+        color: var(--main-text);
+    }
+    .project-page-header .uhc-interactable__context-container{
+        box-shadow: none;
+    }
+
+    /* Sidebar */
+    .uha-navigation {
+        background-color: var(--bg-darker-1);
+    }
+
+    /* Sidebar button */
+    .uhc-vertical-navigation--with-icon{
+        background-color: var(--bg-darker-1);
+        color: var(--text-lighter-1);
+    }
+    .uhc-vertical-navigation--active{
+        background-color: var(--bg-darker-3);
+        color: var(--main-text);
+    }
+    .uhc-vertical-navigation:not(.uhc-vertical-navigation--active):hover{
+        color: var(--text-darker-2);
+    }
+
+    /* Modal sidebar button */
+    .uhc-vertical-navigation{
+        color: var(--text-lighter-1);
+    }
+
+    /* Profile button */
+    .uhc-profile--online, .uhc-profile--offline{
+        background-color: var(--bg-darker-1);
+    }
+    .uhc-profile--online:hover .uhc-icon, .uhc-profile--offline:hover .uhc-icon{
+        color: var(--text-darker-2);
+    }
+
+    /* Search */
+    .uhc-search__container{
+        background-color: var(--bg-darker-2);
+    }
+    .uhc-search__container:hover{
+        background-color: var(--bg-darker-3);
+    }
+    .uhc-search__container:focus-within{
+        background-color: var(--bg-darker-3);
+    }
+    .uhc-search__container input,
+    .uhc-search__container input:focus{
+        color: var(--main-text);
+    }
+
+    /* Header row */
+    .pl-header__row{
+        background-color: transparent;
+        border-color: transparent;
+    }
+    .pl-header__row .pl-header__column{
+        border-left-color: transparent;
+    }
+    .pl-header__row .pl-header__column:last-of-type{
+        border-right-color: transparent;
+    }
+    .pl-header__row .pl-header__column:hover{
+        background-color: var(--bg-darker-1);
+    }
+    .pl-header__row .pl-header__column:active, .pl-header__row .pl-header__column:focus{
+        background-color: var(--bg-darker-2);
+    }
+
+    /* Paragraph */
+    .uhc-paragraph{
+        color: var(--text-lighter-1);
+    }
+
+    /* Inner link */
+    .uhc-link__inner{
+        color: var(--text-lighter-1);
+    }
+
+    /* Icon */
+    .uhc-icon{
         color: var(--medium);
     }
-    md-select.md-default-theme:not([disabled]):focus .md-select-value, md-select:not([disabled]):focus .md-select-value{
-        color: var(--text-lighter-1) !important;
+    .uhc-icon-button:hover .uhc-icon{
+        color: var(--text-darker-2);
     }
-    .project-list-container::-webkit-scrollbar, .card-list-container md-tab-content::-webkit-scrollbar {
-        background: var(--bg-lighter-2) !important;
+
+    /* Item row */
+    .pl-item__row:hover{
+        background-color: var(--bg-darker-1);
     }
-    .install-list::-webkit-scrollbar, .elements-container::-webkit-scrollbar, .learn-page::-webkit-scrollbar{
-        background: transparent !important;
+    .pl-item__row:hover:not(:focus){
+        box-shadow: 0 0 0 0.25rem var(--bg-darker-1);
     }
-    .project-list-container::-webkit-scrollbar-thumb:hover, .card-list-container md-tab-content::-webkit-scrollbar-thumb:hover{
-        background-color: var(--medium-lighter-1) !important;
-        border-color: var(--bg-lighter-2) !important;
+    .pl-item__row:focus{
+        background-color: var(--bg-darker-2);
     }
-    .install-list::-webkit-scrollbar-thumb:hover, .elements-container::-webkit-scrollbar-thumb:hover, .learn-page::-webkit-scrollbar-thumb:hover {
-        background-color: var(--medium-lighter-1) !important;
-        border-color: var(--bg-lighter-2) !important;
+
+    /* Item row button */
+    .pl-item__row:hover .pl-item__column--editor .editor-version__button, .pl-item__row:hover .pl-item__advanced-button .uhc-icon-button{
+        background-color: var(--bg-darker-3);
     }
-    .project-list-container::-webkit-scrollbar-thumb, .card-list-container md-tab-content::-webkit-scrollbar-thumb {
-        background-color: var(--medium) !important;
-        border: 5px solid var(--bg-lighter-2) !important;
+    .pl-item__row:hover .pl-item__column--editor .editor-version__button:hover, .pl-item__row:hover .pl-item__advanced-button .uhc-icon-button:hover{
+        background-color: var(--bg-darker-5);
     }
-    .install-list::-webkit-scrollbar-thumb, .elements-container::-webkit-scrollbar-thumb, .learn-page::-webkit-scrollbar-thumb {
-        background-color: var(--medium) !important;
-        border: 5px solid var(--body-bg) !important;
+
+    /* Item row icon button */
+    .pl-item__row:hover .pl-item__issues-button .uhc-icon-button{
+        background-color: var(--bg-darker-3);
     }
-    .project-list-container::-webkit-scrollbar-track:hover, .card-list-container md-tab-content::-webkit-scrollbar-track:hover{
-        background-color: var(--bg-lighter-3) !important;
+    .pl-item__row:hover .pl-item__issues-button .uhc-icon-button:hover{
+        background-color: var(--bg-darker-5);
     }
-    .install-list::-webkit-scrollbar-track:hover, .elements-container::-webkit-scrollbar-track:hover, .learn-page::-webkit-scrollbar-track:hover {
-        background-color: transparent !important;
+
+    /* Item row icon */
+    .pl-item__row:hover .pl-item__column--editor .editor-version__button .uhc-icon, .pl-item__row:hover .pl-item__advanced-button .uhc-icon-button .uhc-icon{
+        color: var(--main-text);
     }
-    .project-list-container::-webkit-scrollbar-track, .card-list-container md-tab-content::-webkit-scrollbar-track{
-        background: var(--bg-lighter-2) !important;
+
+    /* Dropdown button */
+    .uhc-button-dropdown__button{
+        color: var(--main-text);
     }
-    .install-list::-webkit-scrollbar-track, .elements-container::-webkit-scrollbar-track, .learn-page::-webkit-scrollbar-track {
-        background: transparent !important;
+    .uhc-button-dropdown--secondary .uhc-button-dropdown__dropdown .uhc-icon{
+        color: var(--main-text);
     }
-    md-select-menu.md-default-theme md-content, md-select-menu md-content, md-menu-content.md-default-theme, md-menu-content {
-        background-color: var(--bg-lighter-5) !important;
+    .uhc-button-dropdown--secondary .uhc-button-dropdown__button, .uhc-button-dropdown--secondary .uhc-button-dropdown__dropdown{
+        background-color: var(--bg-darker-2);
     }
-    md-select-menu.md-default-theme md-content md-option, md-select-menu md-content md-option, md-menu-content.md-default-theme md-menu-item, md-menu-content md-menu-item {
+    .uhc-button-dropdown--secondary .uhc-button-dropdown__button:hover:not([disabled]), .uhc-button-dropdown--secondary .uhc-button-dropdown__dropdown:hover:not([disabled]){
+        background-color: var(--bg-darker-3);
+    }
+    .uhc-button-dropdown--secondary .uhc-button-dropdown__button:active:not([disabled]), .uhc-button-dropdown--secondary .uhc-button-dropdown__dropdown:active:not([disabled]){
+        background-color: var(--bg-darker-5);
+    }
+
+    /* Dropdown select */
+    .uhc-dropdown__container select{
+        color: var(--main-text);
+        background-color: var(--bg-darker-2);
+    }
+    .uhc-dropdown__container select:hover{
+        background-color: var(--bg-darker-3);
+    }
+    .uhc-dropdown__container select:focus{
+        background-color: var(--bg-darker-1);
+    }
+    .uhc-dropdown__container label{
         color: var(--text-lighter-1);
     }
-    .install-badge{
-        background-color: var(--badge-gray) !important;
+
+    /* Editor item */
+    .editor-item{
+        background-color: var(--bg-darker-1);
     }
-    /* input */
-    md-input-container.md-default-theme:not(.md-input-invalid).md-input-has-value label, md-input-container:not(.md-input-invalid).md-input-has-value label {
-        color: var(--medium-lighter-1) !important;
+    .editor-item:hover, .editor-item--selected{
+        background-color: var(--bg-darker-2);
     }
-    md-input-container.md-default-theme .md-input, md-input-container .md-input{
-        color: var(--main-text) !important;
-        border-color: var(--black-a30) !important;
+    .editor-item:not(.editor-item--selected):hover .editor-item__radio, .editor-item:not(.editor-item--selected):hover .editor-item__radio__info__badge.uhc-badge--grey{
+        color: var(--text-darker-1);
     }
-    md-input-container.md-default-theme .md-input::placeholder, md-input-container .md-input::placeholder{
-        color: var(--medium-lighter-1) !important;
-    }
-    md-input-container:not(.md-input-focused).md-default-theme .md-placeholder, md-input-container:not(.md-input-focused) .md-placeholder, md-input-container:not(.md-input-focused).md-default-theme label, md-input-container:not(.md-input-focused) label{
-        color: var(--main-text) !important;
-    }
-    /* textarea */
-    textarea{
-        background-color: var(--bg-lighter-3);
-        border:none;
-        color: var(--medium-lighter-1);
-    }
-    /* common */
-    md-list.md-default-theme md-list-item.md-2-line .md-list-item-text h3,
-    md-list md-list-item.md-2-line .md-list-item-text h3,
-    md-list.md-default-theme md-list-item.md-2-line .md-list-item-text h4,
-    md-list md-list-item.md-2-line .md-list-item-text h4,
-    md-list.md-default-theme md-list-item.md-3-line .md-list-item-text h3,
-    md-list md-list-item.md-3-line .md-list-item-text h3,
-    md-list.md-default-theme md-list-item.md-3-line .md-list-item-text h4,
-    md-list md-list-item.md-3-line .md-list-item-text h4 {
+
+    /* Editor item platform button */
+    .uha-modules-list .uha-modules-list__item, .uha-modules-list .uha-modules-list__item__button, .uha-modules-list .uha-modules-list__item__add-platform-button{
         color: var(--text-lighter-1);
     }
-    md-list.md-default-theme md-list-item.md-2-line .md-list-item-text p,
-    md-list md-list-item.md-2-line .md-list-item-text p,
-    md-list.md-default-theme md-list-item.md-3-line .md-list-item-text p,
-    md-list md-list-item.md-3-line .md-list-item-text p {
-        color: var(--main-text) !important;
+    .uha-modules-list .uha-modules-list__item__add-platform-button{
+        color: var(--body-bg);
     }
-    /* button */
-    .md-button.md-default-theme.md-raised, .md-button.md-raised {
+
+    /* License container */
+    .uha-license-container{
+        background-color: var(--bg-darker-1);
+        border-color: var(--bg-darker-2);
+    }
+    .uha-license-container__badge{
+        background-color: var(--bg-darker-2);
+        border-right-color: transparent;
+    }
+    .uha-license-container__content .uha-row-container .uha-license-date .uhc-paragraph{
         color: var(--text-lighter-1);
-        background-color: var(--bg-lighter-4);
     }
-    .md-button.md-default-theme.md-raised:not([disabled]):hover, .md-button.md-raised:not([disabled]):hover {
-        background-color: var(--bg-lighter-5);
+
+    /* Project issue */
+    .project-issue{
+        background-color: var(--body-bg);
     }
-    .md-button.md-default-theme.md-raised:not([disabled]).md-focused, .md-button.md-raised:not([disabled]).md-focused {
-        background-color: var(--bg-lighter-1);
+
+    /* Horizontal navigation */
+    .uhc-horizontal-navigation{
+        color: var(--main-text);
     }
-    md-nav-bar.md-default-theme .md-button._md-nav-button.md-unselected, md-nav-bar .md-button._md-nav-button.md-unselected{
+    .uhc-horizontal-navigation:not(.uhc-horizontal-navigation--active):hover{
+        color: var(--text-lighter-2);
+    }
+    .uhc-horizontal-navigation--active{
+        color: var(--text-darker-2);
+    }
+
+    /* Install item */
+    .uha__install-item{
+        background-color: var(--bg-darker-1);
+        border-color: var(--bg-darker-2);
+    }
+    .uha__install-item:hover{
+        border-color: var(--bg-darker-5);
+    }
+    .uha__install-item__icon{
+        background-color: var(--bg-darker-2);
+    }
+
+    /* Storage size label */
+    .install-storage-requirements-container .storage-size{
         color: var(--text-lighter);
     }
-    /* tabs */
-    md-tabs.md-default-theme .md-tab, md-tabs .md-tab {
+
+    /* Add module */
+    .add-module__section-head{
+        background-color: var(--bg-darker-2);
+    }
+    .add-module__section{
+        background-color: var(--bg-darker-1);
         color: var(--main-text);
     }
-    /* user menu */
-    .um-user-account .md-button:first-child:enabled:not(:hover) {
-        background-color: transparent !important;
+    .add-module__section-element{
+        border-top-color: var(--bg-darker-2);
+        background-color: var(--bg-darker-2);
     }
-    .um-user-account .md-body-2:not(a) {
-        color: var(--main-text) !important;
+    .add-module__section-element:hover{
+        background-color: var(--bg-darker-5);
     }
-    .um-user-account md-card{
-        background:transparent;
+    .add-module__section-element-installed-item{
+        background-color: var(--bg-darker-1);
     }
-    /* learn item */
-    .learn-page .learn-item{
-        background-color: var(--bg-lighter-2) !important;
+    .add-module__section-element-installed-item:hover{
+        background-color: var(--bg-darker-1);
     }
-    /* learn item top */
-    .learn-top-container .learn-top-items .learn-top-item .learn-top-item-text .learn-top-item-desc {
-        color: var(--main-text) !important;
+
+    /* Download */
+    .uha-download-group__container{
+        background-color: var(--bg-darker-1);
     }
-    /* learn dialog */
-    .learn-dialog-scrollable-area .learn-dialog-content .learn-dialog-content-info{
-        color: var(--main-text) !important;
+    .uha-download-item{
+        background-color: var(--bg-darker-1);
     }
-    /* community card */
-    .community-card md-card-content{
-        background-color: var(--bg-lighter-2) !important;
+    .uha-download-item:hover{
+        background-color: var(--bg-darker-2);
     }
-    /* community card desc */
-    .community-card md-card-content .community-description{
-        color: var(--main-text) !important;
+    .uha-download-sub-item{
+        background-color: var(--body-bg);
     }
-    /* beta badge */
-    .beta{
-        background-color: var(--bg-lighter-4) !important;
+
+    /* Learn item */
+    .uha-learn-item{
+        background-color: var(--bg-darker-1);
     }
-    /* update options */
-    .um-update-options .md-button:first-child:enabled{
-        background-color: var(--bg-lighter-2) !important;
+    .uha-learn-item:hover{
+        background-color: var(--bg-darker-2);
     }
-    /* beta description */
-    .beta-description{
-        background-color: var(--bg-lighter-3) !important;
+
+    /* Template sidebar */
+    .template-sidebar{
+        background-color: var(--body-bg);
     }
-    /* caret */
-    md-menu-content.md-default-theme .md-menu>.md-button:after, md-menu-content .md-menu>.md-button:after{
-        color: var(--main-text) !important;
+
+    /* Template list */
+    .template-list__item--usable{
+        background-color: var(--bg-darker-1);
+        border-color: var(--bg-darker-1);
     }
-    /* dialog */
-    md-dialog.md-default-theme, md-dialog{
-        background-color: var(--bg-lighter-2) !important;
-        color: var(--main-text) !important;
+    .template-list__item--usable:hover{
+        background-color: var(--bg-darker-2);
+        border-color: var(--bg-darker-2);
     }
-    /* stepper */
-    .md-stepper-indicator-wrapper{
-        background-color: var(--bg-lighter-2) !important;
+
+    /* Editor selector */
+    .editor-selector__container .editor-selector:hover, .editor-selector__container .editor-selector:focus{
+        background-color: var(--bg-darker-1);
     }
-    .md-stepper-indicator.md-active .md-stepper-title, .md-stepper-indicator.md-completed .md-stepper-title{
-        color: var(--main-text) !important;
-    }
-    .md-steppers-linear .md-stepper-title, .md-steppers-linear .md-stepper-title small:not(.md-stepper-error-message){
-        color: var(--main-text-a50) !important;
-    }
-    .md-steppers-horizontal .md-stepper-indicator:after{
-        background-color: var(--bg-lighter-5) !important;
-    }
-    .md-stepper-indicator:not(.md-active) .md-stepper-number{
-        background-color: var(--bg-lighter-5) !important;
-        color: var(--main-text);
-    }
-    /* radio */
-    md-radio-button.md-default-theme[disabled], md-radio-button[disabled], md-radio-group.md-default-theme[disabled], md-radio-group[disabled] {
-        color: var(--main-text-a50) !important;
-    }
-    md-radio-button.md-default-theme .md-off, md-radio-button .md-off{
-        border-color: var(--main-text) !important;
-    }
-    md-radio-button.md-default-theme[disabled] .md-container .md-off, md-radio-button[disabled] .md-container .md-off, md-radio-button.md-default-theme[disabled] .md-container .md-on, md-radio-button[disabled] .md-container .md-on, md-radio-group.md-default-theme[disabled] .md-container .md-off, md-radio-group[disabled] .md-container .md-off, md-radio-group.md-default-theme[disabled] .md-container .md-on, md-radio-group[disabled] .md-container .md-on{
-        border-color: var(--main-text-a50) !important;
-    }
-    /* checkbox */
-    md-checkbox.md-default-theme:not(.md-checked) .md-icon, md-checkbox:not(.md-checked) .md-icon{
-        border-color: var(--main-text) !important;
-    }
-    /* back button */
-    .md-button.md-default-theme.md-accent[disabled], .md-button.md-accent[disabled], .md-button.md-default-theme.md-fab[disabled], .md-button.md-fab[disabled], .md-button.md-default-theme.md-raised[disabled], .md-button.md-raised[disabled], .md-button.md-default-theme.md-warn[disabled], .md-button.md-warn[disabled], .md-button.md-default-theme[disabled], .md-button[disabled]{
-        color: var(--main-text-a50) !important;
-    }
-    /* module table container */
-    .module-table-container::-webkit-scrollbar,
-    .module-table-container::-webkit-scrollbar-track{
-        background: var(--bg-lighter-2) !important;
-    }
-    .module-table-container::-webkit-scrollbar-thumb{
-        background-color: var(--medium) !important;
-        border: 5px solid var(--bg-lighter-2) !important;
-    }
-    .module-table-container::-webkit-scrollbar-thumb:hover{
-        background-color: var(--medium-lighter-1) !important;
-        border-color: var(--bg-lighter-3) !important;
+    .editor-list-dropdown__container{
+        background-color: var(--bg-darker-1);
     }
 </style>
 """
@@ -284,12 +483,12 @@ if len(sys.argv) == 2:
     subprocess.run("npx asar extract app.asar app", shell=True)
     print("Backing up...")
     os.rename("app.asar", "app.asar.bak")
-    os.chdir(os.path.join("app", "client", "dist"))
+    os.chdir(os.path.join("app", "build", "renderer"))
     
     print("Patching...")
     for line in fileinput.FileInput("index.html", inplace=1):
-        if "</head>" in line:
-            line=line.replace(line,css + line)
+        if "<body>" in line:
+            line=line.replace(line,line + css)
         print(line, end="")
     
-    print("Done! It's dark now. :D")
+    print("Done! All patched. B)")
