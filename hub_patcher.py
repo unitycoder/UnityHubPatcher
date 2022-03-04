@@ -10,7 +10,7 @@ css = """<style>
     /*                                        */
     /******************************************/
     /*                                        */
-    /*  Last updated on 2022-3-1.             */
+    /*  Last updated on 2022-3-3.             */
     /*                                        */
     /*  Tested with:                          */
     /*   - v3.0.1                             */
@@ -109,15 +109,30 @@ css = """<style>
 
     /* File input */
     .uhc-file-input__container-inputs{
-        background-color: var(--bg-darker-2);
+        background-color: var(--bg-darker-1);
     }
     .uhc-file-input__container-inputs:hover{
-        background-color: var(--bg-darker-3);
+        background-color: var(--bg-darker-2);
+    }
+    .uhc-file-input__container label{
+        color: var(--text-lighter-1);
     }
     .uhc-file-input__container input{
         color: var(--main-text);
     }
-    .uhc-file-input__container label{
+
+    /* Text input */
+    .uhc-input__container input{
+        background-color: var(--bg-darker-1);
+        color: var(--main-text);
+    }
+    .uhc-input__container input:hover{
+        background-color: var(--bg-darker-2);
+    }
+    .uhc-input__container input:focus{
+        background-color: var(--bg-darker-1);
+    }
+    .uhc-input__container label{
         color: var(--text-lighter-1);
     }
 
@@ -138,6 +153,9 @@ css = """<style>
     /* Badge */
     .uhc-badge--grey{
         color: var(--main-text-a50);
+        background-color: var(--badge-gray);
+    }
+    .uhc-badge--yellow{
         background-color: var(--badge-gray);
     }
 
@@ -169,6 +187,11 @@ css = """<style>
     /* Modal header */
     .uhc-modal .uhc-modal__container .uhc-modal__header{
         color: var(--main-text);
+    }
+
+    /* Modal right column */
+    .modal__learn-content-detail .uhc-modal__container .uhc-modal__body .column--right{
+        background-color: transparent;
     }
 
     /* Drawer */
@@ -318,22 +341,22 @@ css = """<style>
         color: var(--main-text);
     }
     .uhc-button-dropdown--secondary .uhc-button-dropdown__button, .uhc-button-dropdown--secondary .uhc-button-dropdown__dropdown{
-        background-color: var(--bg-darker-2);
+        background-color: var(--bg-darker-1);
     }
     .uhc-button-dropdown--secondary .uhc-button-dropdown__button:hover:not([disabled]), .uhc-button-dropdown--secondary .uhc-button-dropdown__dropdown:hover:not([disabled]){
-        background-color: var(--bg-darker-3);
+        background-color: var(--bg-darker-2);
     }
     .uhc-button-dropdown--secondary .uhc-button-dropdown__button:active:not([disabled]), .uhc-button-dropdown--secondary .uhc-button-dropdown__dropdown:active:not([disabled]){
-        background-color: var(--bg-darker-5);
+        background-color: var(--bg-darker-4);
     }
 
     /* Dropdown select */
     .uhc-dropdown__container select{
         color: var(--main-text);
-        background-color: var(--bg-darker-2);
+        background-color: var(--bg-darker-1);
     }
     .uhc-dropdown__container select:hover{
-        background-color: var(--bg-darker-3);
+        background-color: var(--bg-darker-2);
     }
     .uhc-dropdown__container select:focus{
         background-color: var(--bg-darker-1);
@@ -351,6 +374,15 @@ css = """<style>
     }
     .editor-item:not(.editor-item--selected):hover .editor-item__radio, .editor-item:not(.editor-item--selected):hover .editor-item__radio__info__badge.uhc-badge--grey{
         color: var(--text-darker-1);
+    }
+
+    /* Editor version */
+    .editor-version-item{
+        background-color: var(--bg-darker-1);
+        border-color: transparent;
+    }
+    .editor-version-item+.editor-version-item{
+        border-color: transparent;
     }
 
     /* Editor item platform button */
@@ -419,6 +451,7 @@ css = """<style>
         border-top-color: var(--bg-darker-2);
         background-color: var(--bg-darker-2);
     }
+    .add-module__section-element-child:hover,
     .add-module__section-element:hover{
         background-color: var(--bg-darker-5);
     }
@@ -443,12 +476,20 @@ css = """<style>
         background-color: var(--body-bg);
     }
 
+    /* Fade container */
+    .uhc-fade-image__container{
+        background-color: var(--bg-darker-1);
+    }
+
     /* Learn item */
     .uha-learn-item{
         background-color: var(--bg-darker-1);
     }
     .uha-learn-item:hover{
         background-color: var(--bg-darker-2);
+    }
+    .uha-learn-item__thumbnail-container{
+        background-color: var(--bg-darker-1);
     }
 
     /* Template sidebar */
@@ -457,6 +498,9 @@ css = """<style>
     }
 
     /* Template list */
+    .template-list__item{
+        border-color: var(--bg-darker-1);
+    }
     .template-list__item--usable{
         background-color: var(--bg-darker-1);
         border-color: var(--bg-darker-1);
@@ -466,12 +510,40 @@ css = """<style>
         border-color: var(--bg-darker-2);
     }
 
-    /* Editor selector */
-    .editor-selector__container .editor-selector:hover, .editor-selector__container .editor-selector:focus{
+    /* Template details */
+    .modal__template-contents__info-paragraph.uhc-paragraph{
+        color: var(--main-text);
+    }
+    .modal__template-contents .modal__template-contents__package__name{
+        color: var(--main-text);
+    }
+
+    /* Template download */
+    .template-preview__downloading-label{
         background-color: var(--bg-darker-1);
     }
+
+    /* Editor selector */
+    .editor-selector__container .editor-selector:hover, .editor-selector__container .editor-selector:focus{
+        background-color: var(--body-bg);
+    }
     .editor-list-dropdown__container{
+        background-color: var(--body-bg);
+    }
+    .editor-list-dropdown__editor-item{
+        border-bottom-color: transparent;
+    }
+    .editor-list-dropdown__editor-item:hover, .editor-list-dropdown__editor-item:focus{
         background-color: var(--bg-darker-1);
+    }
+    .editor-list-dropdown__editor-item--selected{
+        background-color: var(--bg-darker-1);
+    }
+    .editor-list-dropdown__editor-item .uhc-heading{
+        color: var(--main-text);
+    }
+    .editor-list-dropdown__editor-item--selected .uhc-heading{
+        color: var(--text-darker-1);
     }
 </style>
 """

@@ -1,6 +1,6 @@
 # Hub Patcher
 
-Patches Unity Hub with a custom dark theme.
+Patches Unity Hub with a custom ~dark~ light theme.
 
 ![Dark theme screenshot](/screenshot.png)
 
@@ -22,7 +22,7 @@ If you get `PermissionError: [WinError 32] The process cannot access the file be
 
 * Node Package Manager (NPM)
 * Python 3.5+
-* Unity Hub 2.4.x
+* Unity Hub 3.0.x
 
 ## License
 
