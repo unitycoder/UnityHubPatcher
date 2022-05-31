@@ -1,6 +1,6 @@
 # Hub Patcher
 
-Patches Unity Hub with a custom ~dark~ light theme.
+Patches Unity Hub with a custom theme selector (which includes a custom light theme). Switch between themes by going to Preferences > Appearance. Fancy!
 
 ![Dark theme screenshot](/screenshot.png)
 
@@ -12,7 +12,7 @@ Simply run hub_patcher.py with the path to your Unity Hub installation as the fi
 
 Ex: `python hub_patcher.py "D:/Program Files/Unity Hub"`
 
-Note that Hub Patcher has only been tested on Windows 10 and Linux. OS X may or may not work.
+Note that Hub Patcher has only been tested on Windows 10 and Linux. Windows 11 and OS X may or may not work.
 
 ### Troubleshooting
 
@@ -22,7 +22,7 @@ If you get `PermissionError: [WinError 32] The process cannot access the file be
 
 * Node Package Manager (NPM)
 * Python 3.5+
-* Unity Hub 3.0.x
+* Unity Hub 3.1.x (see branches for older versions)
 
 ## License
 
