@@ -13,6 +13,7 @@ Simply run hub_patcher.py with the path to your Unity Hub installation as the fi
 ### Examples
 
 Windows: `python hub_patcher.py "C:/Program Files/Unity Hub"`
+
 macOS: `python3 ./hub_patcher.py /Applications/Unity\ Hub.app/Contents`
 
 Note that Hub Patcher has only been tested on Windows 10, Linux, and macOS. While Windows 11 _should_ work in theory, your mileage may vary.
