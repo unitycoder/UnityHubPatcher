@@ -14,3 +14,14 @@ Patch Hub 3.6.0 to hide unwanted columns.
 
 ### Cloned from other site and modified here
 https://gitlab.com/GuitarBro/hub-patcher
+
+### Warning
+- For educational use only!
+- if you mess up the templates, reinstall hub (better if you take backup of original app.asar, so you can always deleted modified or unpacked files)
+
+### Images
+before
+![image](https://github.com/unitycoder/UnityHubPatcher/assets/5438317/9461925c-6513-4faa-b8f8-e61eeefa01f8)
+
+after
+![hub2023-10-29 13-07-52](https://github.com/unitycoder/UnityHubPatcher/assets/5438317/03d08762-1e20-4b63-a5ba-a5aa4a8816a3)
