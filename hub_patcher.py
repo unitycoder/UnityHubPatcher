@@ -2,6 +2,7 @@ import subprocess
 import os
 import sys
 import fileinput
+import shutil
 
 css = """<style>
 /* cloud services column header */
@@ -44,7 +45,7 @@ os.chdir(os.path.join(path, "resources"))
 print("Extracting app..")
 subprocess.run("npx asar extract app.asar app", shell=True)
 print("Backing up...")
-os.copy("app.asar", "app.asar.bak")
+shutil.move("app.asar", "app.asar.bak")
 os.chdir(os.path.join("app", "build", "renderer"))
 
 print("Patching...")
