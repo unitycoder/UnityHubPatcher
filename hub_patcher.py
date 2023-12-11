@@ -12,7 +12,7 @@ css = """<style>
 .pl-header__columns-wrapper > :nth-child(2) {display: none !important;}
 
 /* version control column value */
-.hCtBAQ {display: none !important;}
+.pl-item__row [role='presentation'] {display: none !important;}
 
 /* cloud services column value */
 .pl-item__row :nth-child(4) {display: none !important;}
