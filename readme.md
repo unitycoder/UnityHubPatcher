@@ -1,6 +1,9 @@
 ### Info
-Patch Hub 3.6.0 to hide unwanted columns.
+Patch Hub 3.6.0 to hide unwanted columns:
 https://unitycoder.com/blog/2023/10/29/unityhub-3-6-0-remove-version-control-cloud-dashboard-columns/
+
+See also other Unity Hub modifications here:
+https://github.com/unitycoder/UnityHubModding
 
 ### Usage
 - start commandprompt as admin
